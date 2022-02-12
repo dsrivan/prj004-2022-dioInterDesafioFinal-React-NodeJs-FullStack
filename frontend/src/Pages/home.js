@@ -1,84 +1,93 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Paper, Grid, Typography, List, makeStyles } from '@material-ui/core/';
-import Item from '../components/Item';
+import { makeStyles } from '@material-ui/core/';
 import Card from '../components/Card';
+
+import * as S from './home_styled';
+import { ExpandMore } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
-      marginTop: '5px',
+        flexGrow: 1,
+        marginTop: '5px',
     },
     paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center'
+        padding: theme.spacing(2),
+        textAlign: 'center'
     },
-  }));
+}));
 
 const HomePage = () => {
     const products = useSelector(state => state.products)
     const classes = useStyles();
 
-    const categorys = products.map(
+    const categories = products.map(
         category => {
-            const container = { };
+            const container = {};
             container['id'] = category.id_categorys;
             container['name'] = category.name_categorys;
             return container;
         }
     )
 
-    const category = categorys.map(JSON.stringify)
-                    .filter(function(item, index, arr){
-                        return arr.indexOf(item, index + 1) === -1;
-                    })
-                    .map(JSON.parse)
+    const category = categories.map(JSON.stringify)
+        .filter(function (item, index, arr) {
+            return arr.indexOf(item, index + 1) === -1;
+        })
+        .map(JSON.parse)
 
-    const arrayCategory = categorys.map(category => category.name)
-    let count = { };
+    const arrayCategory = categories.map(category => category.name)
+    let count = {};
 
-    for(let i = 0; i < arrayCategory.length; i++){
+    for (let i = 0; i < arrayCategory.length; i++) {
         {
             let key = arrayCategory[i];
             count[key] = (count[key] ? count[key] + 1 : 1)
         }
     }
 
-    return(
-        <Grid container spacing={3} className={classes.root}>
-            <Grid item xs={3}>
-                <Paper className={classes.paper}>
-                    <Typography variant='h5'>
-                        Categorias
-                    </Typography>
-                    <List>
-                        {category.map(
-                            category => {
-                                return (
-                                    <Item
-                                        key = {category.id} 
-                                        name= {category.name}
-                                        details={count[category.name]}
-                                    />
-                                )
-                            }
-                        )}
-                    </List>
-                </Paper>
-            </Grid>
-            <Grid container xs={9} spacing={3} className={classes.root}>
-                {products.map(item => {
-                    return(
+    return (
+        <S.FullContainer>
+
+            <S.Banner>
+                <S.BannerTextsImage>
+                    <S.BannerTexts>
+                        <S.BannerSubTitle>Any subtitle</S.BannerSubTitle>
+                        <S.BannerTitle>Banner title</S.BannerTitle>
+                        <S.BannerText>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi necessitatibus pariatur...
+                        </S.BannerText>
+                        <S.BannerButton href="#ourOffers">
+                            See our products
+                            <ExpandMore />
+                        </S.BannerButton>
+                    </S.BannerTexts>
+                    <S.BannerImage>
+                        <S.BannerImageImg src="https://raw.githubusercontent.com/dsrivan/gamaacademy-2021-HiringCoders2-projeto-Desafio01/main/assets/images/mulher'.png"></S.BannerImageImg>
+                    </S.BannerImage>
+                </S.BannerTextsImage>
+            </S.Banner>
+
+            <S.OurOffers id="ourOffers">
+                <S.OurOffersTitle>
+                    Our Offers
+                </S.OurOffersTitle>
+            </S.OurOffers>
+
+            <S.Offers>
+                {products.map((product, key) => {
+                    return (
                         <Card
-                            key={item.id_product}
-                            product={item}
+                            key={product.id_product}
+                            product={product}
                         >
-                            {item.name_product}
+                            {product.name_product}
                         </Card>
-                    )
+                    );
                 })}
-            </Grid>
-        </Grid>
+            </S.Offers>
+
+        </S.FullContainer>
     )
 }
 
