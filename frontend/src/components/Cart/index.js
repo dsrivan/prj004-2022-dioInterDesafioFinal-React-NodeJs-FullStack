@@ -20,7 +20,7 @@ const Cart = () => {
         <>
             <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#CartModal">
                 <span><i className="fas fa-shopping-cart"></i></span>
-                <span className="badge rounded-pill bg-info text-dark">
+                <span className="badge rounded-pill bg-danger text-light">
                     {cart.value}
                 </span>
             </button>
@@ -31,8 +31,8 @@ const Cart = () => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="CartModalLabel">Meu Carrinho</h5>
-                            <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" className="bg-light border-0 close" data-bs-dismiss="modal" aria-label="Close">
+                                <i className="far text-dark fa-times-circle fs-4"></i>
                             </button>
                         </div>
 
@@ -40,42 +40,70 @@ const Cart = () => {
                             <table className="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Produto</th>
-                                        <th scope="col">Qtd</th>
-                                        <th scope="col">Preço</th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
-                                        <th scope="col">Total</th>
+                                        <th scope="col" style={{ textAlign: "center", verticalAlign: "middle" }}>Option</th>
+                                        <th scope="col" style={{ textAlign: "center", verticalAlign: "middle" }}>Product</th>
+                                        <th scope="col" style={{ textAlign: "center", verticalAlign: "middle" }}>Qtd</th>
+                                        <th scope="col" style={{ textAlign: "center", verticalAlign: "middle" }}>Price</th>
+                                        <th scope="col" style={{ textAlign: "center", verticalAlign: "middle" }}>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {cart.Cart.map(item => {
                                         return (
                                             <tr key={item.id}>
-                                                <th><button onClick={() => dispatch(cartActions.DeleteItem(cart, item))} className="badge bg-danger"><i className="fas fa-window-close"></i></button></th>
-                                                <th><img className="img-fluid img-thumbnail" src={item.image} alt={item.Name} width="50px" /></th>
-                                                <th><span className="badge badge-pill bg-warning">
+
+                                                {/* option */}
+                                                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                                                    <button onClick={() => dispatch(cartActions.DeleteItem(cart, item))} className="badge bg-light border-0">
+                                                        <i className="fas fa-times-circle text-danger fs-4"></i>
+                                                    </button>
+                                                </td>
+
+                                                {/* Product */}
+                                                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                                                    <img className="img-fluid img-thumbnail border-0" src={item.image} alt={item.Name} width="50px" />
+                                                </td>
+
+                                                {/* Qtd */}
+                                                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                                                    <button onClick={() => dispatch(cartActions.RemoveItem(cart, item))} className="bg-transparent border-0">
+                                                        <i className="fas fa-minus-circle text-secondary"></i>
+                                                    </button>
                                                     {item.quantity}
-                                                </span></th>
-                                                <th>R$ {item.price.toFixed(2)}</th>
-                                                <th><button onClick={() => dispatch(cartActions.AddItem(cart, item))} className="badge badge-pill bg-primary"><i className="fas fa-plus"></i></button></th>
-                                                <th><button onClick={() => dispatch(cartActions.RemoveItem(cart, item))} className="badge badge-pill bg-danger"><i className="fas fa-minus"></i></button></th>
-                                                <th>R$ {(item.price * item.quantity).toFixed(2)}</th>
+                                                    <button onClick={() => dispatch(cartActions.AddItem(cart, item))} className="bg-transparent border-0">
+                                                        <i className="fas fa-plus-circle"></i>
+                                                    </button>
+                                                </td>
+
+                                                {/* Price */}
+                                                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                                                    R$ {item.price.toFixed(2)}
+                                                </td>
+
+                                                {/* Total */}
+                                                <td style={{ textAlign: "center", verticalAlign: "middle" }}>
+                                                    R$ {(item.price * item.quantity).toFixed(2)}
+                                                </td>
                                             </tr>
                                         )
                                     })}
                                     <tr>
-                                        <th colSpan="2" scope="col">Total</th>
-                                        <th colSpan="3">{cart.value} itens</th>
-                                        <th colSpan="2">R$ {totalPrice.toFixed(2)}</th>
+                                        <td colSpan="2" scope="col"
+                                        >Total
+                                        </td>
+                                        <td colSpan="2">
+                                            {cart.value} {(cart.value === 1) ? "item" : "items"}
+                                        </td>
+                                        <td colSpan="2">
+                                            R$ {totalPrice.toFixed(2)}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

@@ -98,6 +98,7 @@ export const BannerButton = styled.a`
     border: 1px solid;
     border-color: #b34c4c;
     color: #fff;
+    text-align: center;
     cursor: pointer;
     transition: all .2s ease-in-out;
     text-decoration: none;

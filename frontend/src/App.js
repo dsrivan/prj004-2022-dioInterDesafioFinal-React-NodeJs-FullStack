@@ -5,6 +5,7 @@ import Routes from './routes';
 import { Container } from '@material-ui/core/';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import './App.css';
 
 const App = () => {
 

@@ -3,27 +3,33 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core/';
 
 import * as S from './Header_styled';
+
 import Cart from '../components/Cart/index';
 
 const Header = () => {
     return (
-        <Grid container xs={12}>
+        <Grid container xs={12} style={{ padding: "20px 0" }}>
             <S.Navigation>
-                <div>
+                <div style={{ display: "flex" }}>
                     <S.Logo>eStore</S.Logo>
-                </div>
-                <div>
                     <S.NavigationItem>
                         <Link to="/">
                             <S.NavigationItem>Home</S.NavigationItem>
                         </Link>
                     </S.NavigationItem>
+                    <S.NavigationItem>Promo</S.NavigationItem>
+                    <S.NavigationItem>Shop</S.NavigationItem>
+                    <S.NavigationItem>Blog</S.NavigationItem>
+                </div>
+                <div>
                     <S.NavigationItem>
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-user"></i>
                         <Cart />
                     </S.NavigationItem>
                 </div>
             </S.Navigation>
-        </Grid>
+        </Grid >
     )
 }
 
