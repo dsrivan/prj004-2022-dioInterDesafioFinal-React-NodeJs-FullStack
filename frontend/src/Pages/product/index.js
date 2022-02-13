@@ -47,7 +47,10 @@ const ProductDetails = () => {
                     }}>
                         <p style={{ fontWeight: "bold", color: "gray" }}>{name_categorys}</p>
                         <h1>{name_product}</h1>
-                        <h2>Price: {price.toFixed(2)}</h2>
+                        <h2>$ {price.toFixed(2)}</h2>
+                        <p style={{ margin: "30px 0" }}>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, a optio adipisci porro aspernatur dolorem doloribus, dolor nihil voluptates culpa quam illo, pariatur animi exercitationem officia iste voluptatem voluptate. Laudantium.
+                        </p>
                     </div>
                     <div>
                         <S.OffersItemButton>

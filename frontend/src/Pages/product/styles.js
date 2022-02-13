@@ -22,7 +22,7 @@ export const DivImageProduct = styled.div`
     width: 50%;
     text-align: center;
     
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
         width: 100%;
     }
 `;
@@ -32,16 +32,16 @@ export const DivDetailsProduct = styled.div`
     width: 50%;
     /* border: 1px dashed green; */
     
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
         width: 100% !important;
     }
 `;
 
 export const ImageProduct = styled.img`
     width: 100%;
-    max-width: 40vw;
+    /* max-width: 60%; */
     
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
         max-width: 100% !important;
     }
 `;
@@ -56,12 +56,11 @@ export const OffersItemButton = styled.button`
     border: 1px solid;
     cursor: pointer;
     margin: 1rem 0;
-    font-size: 12px;
     transition: all .2s ease-in-out;
     
     &:first-child {
-        background-color: #b34c4c;
-        border-color: #b34c4c;
+        background-color: #111;
+        border-color: #111;
         color: #fff;
         
         &:hover {
