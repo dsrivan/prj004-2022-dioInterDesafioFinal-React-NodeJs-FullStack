@@ -13,7 +13,8 @@ export const Row = styled.div`
     border: 1px dashed pink;
 
     &:nth-child(1),
-    &:nth-child(2) {
+    &:nth-child(2),
+    &:nth-child(3) {
         border: none;
     }
 `;
@@ -30,8 +31,8 @@ export const DivImageProduct = styled.div`
 export const DivDetailsProduct = styled.div`
     align-items: flex-start;
     width: 50%;
-    /* border: 1px dashed green; */
-    
+    padding: 0 2vw;
+
     @media screen and (max-width: 768px) {
         width: 100% !important;
     }
@@ -39,7 +40,6 @@ export const DivDetailsProduct = styled.div`
 
 export const ImageProduct = styled.img`
     width: 100%;
-    /* max-width: 60%; */
     
     @media screen and (max-width: 768px) {
         max-width: 100% !important;
