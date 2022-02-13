@@ -6,7 +6,8 @@ export const Navigation = styled.ul`
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    padding: 0;
 `;
 
 export const Logo = styled.h1`
@@ -24,4 +25,8 @@ export const NavigationItem = styled.li`
     color: #111;
     font-weight: 400;
     cursor: pointer;
+
+    &:hover {
+        font-weight: 500;
+    }
 `;

@@ -17,9 +17,6 @@ const Header = () => {
                             <S.NavigationItem>Home</S.NavigationItem>
                         </Link>
                     </S.NavigationItem>
-                    <S.NavigationItem>Promo</S.NavigationItem>
-                    <S.NavigationItem>Shop</S.NavigationItem>
-                    <S.NavigationItem>Blog</S.NavigationItem>
                 </div>
                 <div>
                     <S.NavigationItem>

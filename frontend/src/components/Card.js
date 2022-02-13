@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/';
 import { useSelector, useDispatch } from 'react-redux';
 import cartActions from './store/actions/cart';
@@ -44,46 +45,20 @@ const Card = ({ product, children }) => {
                     variant="contained"
                     onClick={() => dispatch(cartActions.Add(cart, product))}
                 >
-                    <ShoppingCart color="dark" className="noEvents" />
+                    <ShoppingCart color="dark" className="noEvents" style={{ marginRight: "10px" }} />
                     Add to cart
                 </S.OffersItemButton>
-                <S.OffersItemButton>
-                    <Info color="dark" className="noEvents" />
-                    More Information
-                </S.OffersItemButton>
+                <Link
+                    to={`/product/${product.id_product}`}
+                    className="text-decoration-none">
+                    <S.OffersItemButton>
+                        <Info color="dark" className="noEvents" style={{ marginRight: "10px" }} />
+                        Product description
+                    </S.OffersItemButton>
+                </Link>
             </S.DivOffersItemButton>
 
         </S.OffersItem>
-
-
-
-
-
-
-
-
-        // <Grid item xs={3}>
-        //     <Paper className={classes.paper}>
-        //         <Grid container direction='column'>
-        //             <Grid item>
-        //             <img width="140px" src={product.image} alt={product.name_product}/>
-        //             <Typography variant='h6'>
-        //                 {children}
-        //             </Typography>
-        //             <Typography variant='subtitle1'>
-        //                 R$ {product.price.toFixed(2)}
-        //             </Typography>
-        //             </Grid>
-
-        //         <Button 
-        //             variant="contained"
-        //             onClick={()=>dispatch(cartActions.Add(cart, product))}
-        //         >
-        //             Adicionar
-        //         </Button>
-        //         </Grid>
-        //     </Paper>
-        // </Grid>
     )
 }
 

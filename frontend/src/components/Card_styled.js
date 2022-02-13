@@ -95,7 +95,9 @@ export const DivOffersItemButton = styled.div`
 
 export const OffersItemButton = styled.button`
     width: inherit;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem 2rem;
     border-radius: 4px;
     border: 1px solid;
@@ -116,12 +118,14 @@ export const OffersItemButton = styled.button`
     }
     
     &:last-child {
+        width: 100%;
         background-color: #efefef;
         border-color: #efefef;
         color: #111;
         
         &:hover {
             background-color: #c6c6c6;
+            border-color: #c6c6c6;
         }
     }
 

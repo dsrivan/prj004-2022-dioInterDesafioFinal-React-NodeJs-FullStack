@@ -1,18 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import HomePage from './Pages/home';
-import Contatos from './Pages/contato';
+import ProductDetails from './Pages/product/index';
 
 const MainRoutes = () => {
-    return(
+    return (
         <Routes>
             <Route
                 path="/"
                 element={<HomePage />}
             />
             <Route
-                path="/contato"
-                element={<Contatos />}
+                path={`/product/:id`}
+                element={<ProductDetails />}
             />
         </Routes>
     )
