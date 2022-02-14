@@ -128,7 +128,7 @@ const ProductDetails = () => {
                         </p>
                     </div>
                     <div>
-                        <S.OffersItemButton>
+                        <S.OffersItemButton style={{ cursor: "not-allowed", userSelect: "none" }}>
                             <ShoppingCart
                                 className="noEvents"
                                 style={{ marginRight: "10px" }}
@@ -188,14 +188,14 @@ const ProductDetails = () => {
 
                         {validator &&
                             <div className="alert alert-warning alert-dismissible fade show mt-2" role="alert">
-                                <strong>Por favor preencha todos os campos!</strong>
+                                <strong>Please fill in all fields!</strong>
                                 <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         }
 
                         {success &&
                             <div className="alert alert-success alert-dismissible fade show mt-2" role="alert">
-                                <strong>Mensagem foi enviada</strong>
+                                <strong>Comment inserted!</strong>
                             </div>
                         }
                         <button
