@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/';
+// import { makeStyles } from '@material-ui/core/';
 import { useSelector, useDispatch } from 'react-redux';
 import cartActions from './store/actions/cart';
 
 import * as S from './Card_styled';
 import { ShoppingCart, Info } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center'
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     paper: {
+//         padding: theme.spacing(2),
+//         textAlign: 'center'
+//     },
+// }));
 
 const Card = ({ product, children }) => {
     const cart = useSelector(state => state.cart.value)
     const dispatch = useDispatch();
-    const classes = useStyles();
+    // const classes = useStyles();
 
     return (
 
@@ -45,14 +45,14 @@ const Card = ({ product, children }) => {
                     variant="contained"
                     onClick={() => dispatch(cartActions.Add(cart, product))}
                 >
-                    <ShoppingCart color="dark" className="noEvents" style={{ marginRight: "10px" }} />
+                    <ShoppingCart className="noEvents" style={{ marginRight: "10px" }} />
                     Add to cart
                 </S.OffersItemButton>
                 <Link
                     to={`/product/${product.id_product}`}
                     className="text-decoration-none">
                     <S.OffersItemButton>
-                        <Info color="dark" className="noEvents" style={{ marginRight: "10px" }} />
+                        <Info className="noEvents" style={{ marginRight: "10px" }} />
                         Product description
                     </S.OffersItemButton>
                 </Link>

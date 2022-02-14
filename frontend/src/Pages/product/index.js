@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
 
 import * as S from './styles';
-import { ShoppingCart, Info } from '@material-ui/icons';
+import { ShoppingCart } from '@material-ui/icons';
+import { List, ListItem } from '@material-ui/core/';
 
 import products from './../../../src/components/store/reducers/product';
 
@@ -14,13 +15,12 @@ const ProductDetails = () => {
 
     const [comments, setComments] = useState([]);
     const [validator, setValidator] = useState(false);
-    const [message, setMessage] = useState([]);
     const [author, setAuthor] = useState('');
     const [content, setContent] = useState('');
     const [render, setRender] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const getActualProduct = ({ id_product }) => id_product == id;
+    const getActualProduct = ({ id_product }) => id_product === parseInt(id);
     const {
         image,
         name_product,
@@ -28,7 +28,13 @@ const ProductDetails = () => {
         name_categorys
     } = products.filter(getActualProduct)[0];
 
-    const url = 'http://localhost:5000/message'
+    const url = 'http://localhost:5000/message';
+
+    const toTop = () => window.scrollTo(0, 0);
+
+    useEffect(() => {
+        toTop()
+    }, [])
 
     useEffect(() => {
         axios
@@ -37,6 +43,7 @@ const ProductDetails = () => {
                 const data = response.data;
                 setComments(data);
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [render]);
 
     const sendMessage = () => {
@@ -77,10 +84,10 @@ const ProductDetails = () => {
         year: 'numeric',
         month: 'long',
         weekday: 'long',
-        // day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric',
+        // day: 'numeric',
         // era: 'long',
         // timeZoneName: 'long'
     }
@@ -122,7 +129,10 @@ const ProductDetails = () => {
                     </div>
                     <div>
                         <S.OffersItemButton>
-                            <ShoppingCart color="dark" className="noEvents" style={{ marginRight: "10px" }} />
+                            <ShoppingCart
+                                className="noEvents"
+                                style={{ marginRight: "10px" }}
+                            />
                             Add to cart
                         </S.OffersItemButton>
                     </div>
@@ -150,6 +160,7 @@ const ProductDetails = () => {
                             rows={3}
                             maxLength={300}
                             onChange={(event) => { setContent(event.target.value) }}
+                            defaultValue={content}
                             style={{
                                 width: "100%",
                                 resize: "none",
@@ -157,7 +168,6 @@ const ProductDetails = () => {
                                 borderRadius: "4px",
                                 padding: "10px"
                             }}>
-                            {content}
                         </textarea>
                         <small>Tap your best e-mail</small>
                         <input
@@ -213,17 +223,18 @@ const ProductDetails = () => {
                     <div style={{
                         margin: "20px 0"
                     }}>
-                        <ul style={{ listStyle: "none", padding: "0" }}>
+                        <List
+                            style={{ listStyle: "none", padding: "0" }}>
                             {comments && comments.map(({ id, email, message, created_at }, key) => {
                                 let data = new Date(created_at).toLocaleDateString('pt-br', optionDate)
                                 return (
-                                    <li key={key}
-                                        data-idComment={id}
+                                    <ListItem
+                                        key={key}
                                         style={{
                                             width: "100%",
                                             backgroundColor: "#f7f7f7",
                                             borderRadius: "5px",
-                                            // border: "1px solid lightgray",
+                                            border: "1px solid lightgray",
                                             padding: "5px",
                                             marginBottom: "20px"
                                         }}>
@@ -239,16 +250,13 @@ const ProductDetails = () => {
                                                 fontSize: "13px",
                                                 marginTop: "10px"
                                             }}>
-                                                {/* {
-                                                    `${created_at.split('T')[0]} - ${created_at.split('T')[1]}`
-                                                } */}
                                                 {data}
                                             </p>
                                         </div>
-                                    </li>
+                                    </ListItem>
                                 )
                             })}
-                        </ul>
+                        </List>
                     </div>
 
                 </div>

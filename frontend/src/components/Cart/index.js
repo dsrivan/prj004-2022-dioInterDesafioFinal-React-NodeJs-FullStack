@@ -19,10 +19,14 @@ const Cart = () => {
     return (
         <>
             <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#CartModal">
-                <span><i className="fas fa-shopping-cart"></i></span>
-                <span className="badge rounded-pill bg-danger text-light">
-                    {cart.value}
-                </span>
+                <div>
+                    <span><i className="fas fa-shopping-cart"></i></span>
+                    <span
+                        className="badge rounded-pill bg-danger text-light"
+                        style={{ position: "absolute", right: "0" }}>
+                        {cart.value}
+                    </span>
+                </div>
             </button>
 
             {/* Modal */}
@@ -88,15 +92,9 @@ const Cart = () => {
                                         )
                                     })}
                                     <tr>
-                                        <td colSpan="2" scope="col"
-                                        >Total
-                                        </td>
-                                        <td colSpan="2">
-                                            {cart.value} {(cart.value === 1) ? "item" : "items"}
-                                        </td>
-                                        <td colSpan="2">
-                                            R$ {totalPrice.toFixed(2)}
-                                        </td>
+                                        <th colSpan="2" scope="col">Total</th>
+                                        <td colSpan="2">{cart.value} {(cart.value === 1) ? "item" : "items"}</td>
+                                        <td colSpan="2">R$ {totalPrice.toFixed(2)}</td>
                                     </tr>
                                 </tbody>
                             </table>
